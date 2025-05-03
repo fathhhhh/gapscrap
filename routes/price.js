@@ -7,6 +7,7 @@ const router = express.Router()
 router.get("/", (req, res)=> {
     axios.get('https://publicgold.com.my/').then((respond) => {
         const html_data = respond.data
+        const plain = cheerio.load(html_data)
         const $ = cheerio.load(html_data)
         const price = $(':contains("1.0000")')
         const priceArray = [];
