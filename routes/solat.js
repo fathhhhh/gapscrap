@@ -13,7 +13,8 @@ function convertTo12Hour(time24) {
 
 // Route handler
 router.get("/", (req, res) => {
-    axios.get("https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=date&zone=WLY01&date=2025-05-04")
+    const datetime = new Date().toISOString().split("T")[0]; // Format as YYYY-MM-DD
+    axios.get(`https://www.e-solat.gov.my/index.php?r=esolatApi/takwimsolat&period=date&zone=WLY01&date=${datetime}`)
         .then((respond) => {
             const output = respond.data;
             // Convert prayer times to 12-hour format
@@ -36,5 +37,7 @@ router.get("/", (req, res) => {
             res.status(500).json({ error: 'Failed to fetch prayer times' });
         });
 });
+
+
 
 module.exports = router;
