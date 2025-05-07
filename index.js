@@ -7,7 +7,7 @@ app.use(express.json())
 
 /* Set route */
 app.get("/", (req, res) =>{
-    res.status(200).send("running")
+    res.status(200).json("running")
 })
 
 const priceRouter = require('./routes/price')
