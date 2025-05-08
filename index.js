@@ -6,8 +6,9 @@ const app = express()
 app.use(express.json())
 
 /* Set route */
-app.get("/", (req, res) =>{
-    res.status(200).json("running")
+app.get('/', (req, res) => {
+    const version = '1';
+    res.status(200).json({ status: 'running', version });
 })
 
 const priceRouter = require('./routes/price')
