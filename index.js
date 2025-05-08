@@ -16,6 +16,9 @@ app.use('/price', priceRouter)
 const solatRouter = require('./routes/solat')
 app.use('/solat', solatRouter)
 
+const wsRouter = require('./routes/ws')
+app.use('/ws', wsRouter)
+
 /* Start Listener */
 const port = 3000;
 app.listen(port, () => {
